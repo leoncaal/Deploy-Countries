@@ -1,7 +1,7 @@
 import styles from "./Home.module.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCountries, getActivities, orderCountries, filter, resetFilters } from "../../redux/actions";
+import { getAllCountries, getActivities, orderCountries, filter, resetFilters, cleanCountrySearch } from "../../redux/actions";
 import CountryCard from "../CountryCard/CountryCard";
 
 const Home = () => {
@@ -20,7 +20,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(getActivities());
-    return () => dispatch(resetFilters());
+    return () => {
+      dispatch(resetFilters());
+      dispatch(cleanCountrySearch());
+    }
 
   }, [dispatch]);
 
