@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GETALLCOUNTRIES, GETCOUNTRYDETAIL,GETCOUNTRYBYNAME, CLEANCOUNTRYDETAIL, ADDACTIVITY, GETACTIVITIES, ORDER, FILTER, RESETFILTERS } from './actions.types';
+import {GETALLCOUNTRIES, GETCOUNTRYDETAIL,GETCOUNTRYBYNAME, CLEANCOUNTRYDETAIL, CLEANCOUNTRYDETAIL, ADDACTIVITY, GETACTIVITIES, ORDER, FILTER, RESETFILTERS, CLEANCOUNTRIES } from './actions.types';
 
 export const getAllCountries = () => {
     return async function (dispatch) {
@@ -65,6 +65,10 @@ export const filter = (value) => {
 
 export const resetFilters = () => {
     return ({type: RESETFILTERS});
+}
+
+export const cleanCountries = () => {
+    return ({type: CLEANCOUNTRIES});
 }
 
 export const cleanCountryDetail = () => {
