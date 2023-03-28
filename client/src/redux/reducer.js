@@ -6,8 +6,7 @@ import {
   ORDER,
   FILTER,
   RESETFILTERS,
-  CLEANCOUNTRYDETAIL,
-  CLEANCOUNTRIES
+  CLEANCOUNTRYDETAIL
 } from "./actions.types";
 const InitialState = {
   countries: [],
@@ -154,11 +153,7 @@ const reducer = (state = InitialState, action) => {
         ...state,
         countryDetail: {},
       };
-    case CLEANCOUNTRIES:
-      return {
-        ...state,
-        countries: [],
-      };
+      
     default:
       return {
         ...state,

@@ -67,10 +67,6 @@ export const resetFilters = () => {
     return ({type: RESETFILTERS});
 }
 
-export const cleanCountries = () => {
-    return ({type: CLEANCOUNTRIES});
-}
-
 export const cleanCountryDetail = () => {
     return ({type: CLEANCOUNTRYDETAIL});
 }
