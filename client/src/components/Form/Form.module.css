@@ -1,0 +1,152 @@
+.divBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url(../../utils/world.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.divBlur {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  width: 100%;
+  height: 100%;
+}
+.divNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  height: 81px;
+  background-color: dimgrey;
+  width: 100%;
+  padding-left: 40px;
+}
+.Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+.divName{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.divDif{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.divSea{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;  
+}
+.divDur{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.butonx {
+  background-color: white;
+  color: dimgrey;
+  border: 2px solid silver;
+  border-radius: 20px;
+  font-size: 18px;
+}
+.butonx:hover{
+  background-color: dimgrey;
+  border: 2px solid white;
+  color: white;
+}
+.btn {
+  background-color: white;
+  color: dimgrey;
+  border: 2px solid silver;
+  border-radius: 18px;
+  font-size: 18px;
+  padding: 8px 50px;
+}
+.btn:hover {
+  background-color: dimgrey;
+  border: 2px solid white;
+  color: white;
+}
+.btn2 {
+  background-color: white;
+  color: dimgrey;
+  border: 2px solid dimgrey;
+  border-radius: 18px;
+  font-size: 18px;
+  padding: 8px 50px;
+}
+.btn2:hover {
+  background-color: dimgrey;
+  color: white;
+}
+.inpName{
+  background-color: white;
+  color: dimgrey;
+  border: 2px solid dimgrey;
+  border-radius: 18px;
+  font-size: 18px;
+  padding: 3px 50px;
+}
+.txtAct{
+  color: dimgrey;  
+}
+.txtLabel{
+  font-weight: bold ;
+  font-size: 20px;
+  color: dimgrey; 
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.txtSeasons{
+  font-size: 20px;
+  color: dimgrey;  
+}
+.selectCountry{
+  background-color: white;
+  color: dimgrey;
+  border: 2px solid dimgrey;
+  border-radius: 18px;
+  font-size: 18px;
+  padding: 3px 50px;
+}
+.txtWarning{
+  padding-left: 10px;
+  color: red
+}
+.divCouOp{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.divCountries{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.divAdd{
+  margin-top: 20px;
+}
+.pCountry{
+  margin: 1px 1px 1px 1px;
+}

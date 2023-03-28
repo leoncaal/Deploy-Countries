@@ -1,0 +1,16 @@
+.divBuscar {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: right;
+  padding: 20px;
+}
+.inpBuscar {
+  background-color: white;
+  color: dimgrey;
+  border: 2px solid silver;
+  border-radius: 18px;
+  font-size: 18px;
+  padding: 8px 50px;
+  margin-right: 3px;
+}

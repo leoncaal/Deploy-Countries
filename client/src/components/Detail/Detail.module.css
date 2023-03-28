@@ -1,0 +1,86 @@
+.divBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background: url(../../utils/world.jpg);
+  background-size: cover;
+
+}
+.divBlur {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  width: 100%;
+  height: 100vh;
+}
+.divNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  height: 88px;
+  background-color: dimgrey;
+  width: 100%;
+  padding-left: 40px;
+}
+.divDetail {
+  background-color: silver;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 1rem;
+  border-style: outset;
+}
+.divImg img {
+  width: 250px;
+  height: 160px;
+  padding-right: 40px;
+}
+.divProps {
+  display: inline;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+}
+.divAct {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: left;
+  line-height: 0px;
+}
+.divName {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  line-height: 0px;
+  margin-right: 10px;
+}
+.txtSeasons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: right;
+}
+.btn {
+  background-color: white;
+  color: dimgrey;
+  border: 2px solid silver;
+  border-radius: 18px;
+  font-size: 18px;
+  padding: 8px 50px;
+}
+.btn:hover {
+  background-color: dimgrey;
+  border: 2px solid white;
+  color: white;
+}

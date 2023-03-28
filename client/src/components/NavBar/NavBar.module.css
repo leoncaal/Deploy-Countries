@@ -1,0 +1,38 @@
+.divNav {
+    display:flex;
+    flex-direction:center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+.divButons{
+    display: flex;
+    flex-direction:row;
+    justify-content: left;;
+    align-items: left;
+    padding-left: 20px;
+    width: 90%;
+}
+
+.divSearch{
+    display: flex;
+    flex-direction:row;
+    justify-content: right;
+    align-items: right;
+    width: 90%;
+}
+.btn {
+    background-color: white; 
+    color: dimgrey; 
+    border: 2px solid silver;
+    border-radius: 18px;
+    font-size: 18px;
+    padding: 8px 50px;
+    margin-right: 3px;
+}
+  .btn:hover {
+    background-color: dimgrey;
+    border: 2px solid white;
+    color: white;
+}

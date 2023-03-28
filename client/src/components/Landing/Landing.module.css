@@ -1,0 +1,26 @@
+.divBack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  background: url(../../utils/world.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+.text{
+    color:dimgrey;
+    padding-bottom: 80px;
+}
+.btn {
+    background-color: white; 
+    color: dimgrey; 
+    border: 2px solid dimgrey;
+    border-radius: 18px;
+    font-size: 18px;
+    padding: 8px 50px;
+}
+.btn:hover {
+    background-color: dimgrey;
+    color: white;
+}
