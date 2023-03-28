@@ -20,7 +20,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(getActivities());
-    return () => dispatch(cleanCountries());
+    return () => dispatch(cleanCountries(), resetFilters());
 
   }, [dispatch]);
 
