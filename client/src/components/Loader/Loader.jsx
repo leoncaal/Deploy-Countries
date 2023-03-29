@@ -1,4 +1,3 @@
-import styles from './Loader.module.css';
 import spinner from '../../utils/spinner.gif';
 const Loader = () => {
 

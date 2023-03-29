@@ -17,13 +17,12 @@ const Home = () => {
 /*   const [item, setItems] = useState([...country].slice(0, itemsPage)); */
   
   const [current, setCurrent] = useState(0);
-  const [load, setLoad] = useState(true);
-  
-  
+
+
   useEffect(() => {
-    setLoad(false);
     dispatch(getAllCountries());
     dispatch(getActivities());
+    
     return () => {
       dispatch(resetFilters());
       dispatch(cleanCountrySearch());
@@ -45,6 +44,7 @@ const Home = () => {
     setCurrent(nexPage);
 
   };
+
   const prevHandler = () => {
     const prevPage = current -1;//1
 /*     const firstIndex = (current * itemsPage)-20 ;//20 */
@@ -109,11 +109,11 @@ const Home = () => {
           </select>
 
           <button className={styles.btnReset} onClick={handlerResetFilters}>Reset Filters</button>
-          
+
         </div>
 
-        { load === true && <Loader />}
-       
+        { country.length === 0 && <div className={styles.divWorld}><Loader /></div>}
+
         <div className={styles.divCards}>
           {country.slice(current * 10, (current * 10) + 10).map(count => {
             return (
@@ -131,10 +131,11 @@ const Home = () => {
 
         {filterMixBad === true  && <div className={styles.divCoin}><h1>No existen coincidencias</h1></div>}
         
-        <div className={styles.divPages}>
+        {country.length > 0 && <div className={styles.divPages}>
         <button className={styles.btn} onClick={prevHandler}>Prev</button>
         <h3 className={styles.txtPages}>{current + 1} de {Math.ceil(country.length/10)} </h3>
-        <button className={styles.btn} onClick={nextHandler}>Next</button></div>
+        <button className={styles.btn} onClick={nextHandler}>Next</button></div>}
+        
         
       </div>
     </div>
