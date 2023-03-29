@@ -8,6 +8,7 @@ const Home = () => {
 
   const country = useSelector(state => state?.countries);
   const activities = useSelector(state => state?.activities);
+  const filterMixBad = useSelector(state => state?.filterMix);
   const dispatch = useDispatch();
 
   const itemsPage = 10;
@@ -105,10 +106,10 @@ const Home = () => {
           </select>
 
           <button className={styles.btnReset} onClick={handlerResetFilters}>Reset Filters</button>
-
-
+          
         </div>
-        {country.length ? <div className={styles.divCards}>
+       
+        <div className={styles.divCards}>
           {country.slice(current * 10, (current * 10) + 10).map(count => {
             return (
               <div className={styles.divCard} key={count.id}>
@@ -121,7 +122,9 @@ const Home = () => {
               </div>
             );
           })}
-        </div> :<div className={styles.divCoin}><h1>No existen coincidencias</h1></div>}
+        </div>
+
+        {filterMixBad === true  && <div className={styles.divCoin}><h1>No existen coincidencias</h1></div>}
         
         <div className={styles.divPages}>
         <button className={styles.btn} onClick={prevHandler}>Prev</button>

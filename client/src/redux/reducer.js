@@ -15,7 +15,8 @@ const InitialState = {
   countryDetail: {},
   activities: [],
   filteredContinents: [],
-  filteredActivities: []
+  filteredActivities: [],
+  filterMix: false
 };
 
 const reducer = (state = InitialState, action) => {
@@ -85,12 +86,14 @@ const reducer = (state = InitialState, action) => {
           if (mixFilter.length === 0){
             return {
               ...state,
-              countries: mixFilter
+              countries: mixFilter,
+              filterMix: true
             }
           } else {
             return {
               ...state,
-              countries: mixFilter
+              countries: mixFilter,
+              filterMix: false
             }
           }
 
@@ -112,12 +115,14 @@ const reducer = (state = InitialState, action) => {
         if (mixFilter.length === 0){
           return {
             ...state,
-            countries: mixFilter
+            countries: mixFilter,
+            filterMix: true
           }
         } else {
           return {
             ...state,
-            countries: mixFilter
+            countries: mixFilter,
+            filterMix: false
           }
         }
         
