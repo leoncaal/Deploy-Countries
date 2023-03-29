@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCountries, getActivities, orderCountries, filter, resetFilters, cleanCountrySearch } from "../../redux/actions";
 import CountryCard from "../CountryCard/CountryCard";
+import Loader from "../Loader/Loader";
 
 const Home = () => {
 
@@ -16,9 +17,11 @@ const Home = () => {
 /*   const [item, setItems] = useState([...country].slice(0, itemsPage)); */
   
   const [current, setCurrent] = useState(0);
+  const [load, setLoad] = useState(true);
   
   
   useEffect(() => {
+    setLoad(false);
     dispatch(getAllCountries());
     dispatch(getActivities());
     return () => {
@@ -108,6 +111,8 @@ const Home = () => {
           <button className={styles.btnReset} onClick={handlerResetFilters}>Reset Filters</button>
           
         </div>
+
+        { load === true && <Loader />}
        
         <div className={styles.divCards}>
           {country.slice(current * 10, (current * 10) + 10).map(count => {
