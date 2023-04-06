@@ -25,7 +25,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);  
 
   useEffect(() => {
-   // dispatch(getAllCountries());
+    dispatch(getAllCountries());
     dispatch(getActivities());
 
     return () => {
