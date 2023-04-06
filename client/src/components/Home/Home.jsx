@@ -2,7 +2,7 @@ import styles from "./Home.module.css";
 import plane from '../../utils/plane.gif';
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCountries, getActivities, orderCountries, filter, resetFilters, cleanCountrySearch } from "../../redux/actions";
+import { getAllCountries, getActivities, orderCountries, filter, resetFilters, cleanCountrySearch, currentPage } from "../../redux/actions";
 import CountryCard from "../CountryCard/CountryCard";
 import Loader from "../Loader/Loader";
 
@@ -11,53 +11,57 @@ const Home = () => {
   const country = useSelector(state => state?.countries);
   const activities = useSelector(state => state?.activities);
   const filterMixBad = useSelector(state => state?.filterMix);
+  const current = useSelector(state => state?.currentPage);
   const dispatch = useDispatch();
 
   const itemsPage = 10;
-
-/*   const [item, setItems] = useState([...country].slice(0, itemsPage)); */
+  const totalPages =  Math.ceil(country.length / itemsPage);
+  const arrayPages = [];
   
-  const [current, setCurrent] = useState(0);
-  const [loading, setLoading] = useState(true);
+  for (let i = 0; i < totalPages; i++) {
+    arrayPages.push(i + 1);
+  }
 
+  const [loading, setLoading] = useState(true);  
 
   useEffect(() => {
-    dispatch(getAllCountries());
+   // dispatch(getAllCountries());
     dispatch(getActivities());
-    
+
     return () => {
       dispatch(resetFilters());
       dispatch(cleanCountrySearch());
     }
 
-  }, [dispatch]);
+  }, []);
 
   const nextHandler = () => {
     const totalItems = country.length;
     const nexPage = current + 1;
     const firstIndex = current * itemsPage;
-    console.log(firstIndex);
-    console.log(totalItems);
+
     if (firstIndex >= totalItems - 10 ) {
       return;
     }
-    /* setItems([...country].slice(firstIndex, firstIndex + 10 )); */
 
-    setCurrent(nexPage);
+    dispatch(currentPage(nexPage));
 
   };
 
   const prevHandler = () => {
     const prevPage = current -1;//1
-/*     const firstIndex = (current * itemsPage)-20 ;//20 */
 
     if (prevPage < 0){
       return;
     }
-/*     setItems([...country].slice(firstIndex, firstIndex + 10)); */
 
-    setCurrent(prevPage);
+    dispatch(currentPage(prevPage))
 
+  };
+
+  const pageHandler = (event) => {
+
+    dispatch(currentPage(event.target.name - 1))
   };
 
   const handlerOrder = (event) =>{
@@ -66,14 +70,8 @@ const Home = () => {
 
   const handlerFilter = (event) =>{
     dispatch(filter(event.target.value));
-    setCurrent(0);
+    dispatch(currentPage(0))
   }
-
-/*   const handlerFilterByDif = (event) =>{
-    dispatch(filterByDif(event.target.value))
-  } */
-
-
 
   const handlerResetFilters = () =>{
     dispatch(resetFilters())
@@ -83,8 +81,6 @@ const Home = () => {
   };
 
   const mapActName = activities.map(act => act.name);
-  
-
   const newMap = new Set(mapActName);
 
   let result = [...newMap];
@@ -93,7 +89,7 @@ const Home = () => {
     if (country.length > 0){
       setLoading(false);
     }
-  }, "1500");
+  }, "1000");
 
   return (
     <div className={styles.divBack}>
@@ -115,19 +111,6 @@ const Home = () => {
           <option value="Actividades" disabled="disable">Actividades</option>
             {result.map(act => <option value={act} key={act}>{act}</option> )}
           </select>
-
-
-{/*           <select className={styles.sel} id="activity" defaultValue="Dificultad" onChange={handlerFilterByDif}>
-            <option value="Dificultad" disabled="disable">Dificultad</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select> */}
-
-
-
 
           <select className={styles.sel} id="order" defaultValue="Ordenar" onChange={handlerOrder}>
             <option value="Ordenar" disabled="disable">Ordenar</option>
@@ -159,16 +142,17 @@ const Home = () => {
         </div>
         }
 
-       
-
         {filterMixBad === true  && <div className={styles.divCoin}> <img className={styles.imgPlane} src={plane} alt="plane"/><h1 className={styles.txtCoin}>No existen coincidencias</h1></div>}
         
-        {country.length > 0 && loading === false && <div className={styles.divPages}>
-        <button className={styles.btn} onClick={prevHandler}>Prev</button>
-        <h3 className={styles.txtPages}>{current + 1} de {Math.ceil(country.length/10)} </h3>
-        <button className={styles.btn} onClick={nextHandler}>Next</button></div>}
-        
-        
+        {country.length > 0 && loading === false && 
+        <div>
+          <div className={styles.divPagesTxt}><h3 className={styles.txtPages}>{current + 1} de {Math.ceil(country.length/10)} </h3></div>
+          <div className={styles.divPages}>
+            <button className={styles.btn} onClick={prevHandler}>Prev</button>
+            <div className={styles.divPagesNum}>{arrayPages.map(ele => ele < 10 ? <button className={ ele === current + 1 ? styles.btnCircPagesCurrent : styles.btnCircPages} name={ele} onClick={pageHandler} key = {ele}>0{ele}</button>: <button className={ ele === current + 1 ? styles.btnCircPagesCurrent : styles.btnCircPages} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>)}</div>
+            <button className={styles.btn} onClick={nextHandler}>Next</button>
+          </div>
+        </div>}
       </div>
     </div>
   );

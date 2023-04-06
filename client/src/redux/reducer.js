@@ -3,11 +3,13 @@ import {
   GETCOUNTRYDETAIL,
   GETCOUNTRYBYNAME,
   GETACTIVITIES,
-  ORDER,
-  FILTER,
-  RESETFILTERS,
+  CLEANCOUNTRYSEARCH,
   CLEANCOUNTRYDETAIL,
-  CLEANCOUNTRYSEARCH
+  ORDER,
+  FILTER, 
+  //FILTERBYDIF, 
+  RESETFILTERS,
+  CURRENTPAGE
 } from "./actions.types";
 const InitialState = {
   countries: [],
@@ -16,7 +18,8 @@ const InitialState = {
   activities: [],
   filteredContinents: [],
   filteredActivities: [],
-  filterMix: false
+  filterMix: false,
+  currentPage: 0
 };
 
 const reducer = (state = InitialState, action) => {
@@ -37,7 +40,7 @@ const reducer = (state = InitialState, action) => {
         return {
           ...state,
           countries: action.payload,
-          allcountries: action.payload
+          allcountries: action.payload,
         };
     case GETACTIVITIES:
       return {
@@ -129,7 +132,6 @@ const reducer = (state = InitialState, action) => {
         }
       }
 
-      
       if(state.filteredContinents.length !== 0 && state.filteredActivities.length === 0){
         return {
           ...state,
@@ -145,15 +147,29 @@ const reducer = (state = InitialState, action) => {
       return{
         ...state
       }
+      
+/*     case FILTERBYDIF:
+      const countryWithActiv = [...state.allcountries].filter(act => act.activities.length > 0);
+      const filterDif = countryWithActiv.filter(coun => {
+        let opt = coun.activities.some(dif => dif.difficulty === action.payload);
+        return opt;
+      });
+      console.log(filterDif);
+      return {
+        ...state,
+        countries: filterDif
+      } */
 
     case RESETFILTERS:
       return {
         ...state,
         countries : [...state.allcountries],
         filteredContinents: [],
-        filteredActivities: []
+        filteredActivities: [],
+        filterMix: false
 
       }
+
     case CLEANCOUNTRYDETAIL:
       return {
         ...state,
@@ -165,6 +181,11 @@ const reducer = (state = InitialState, action) => {
         ...state,
         countries: [],
       };
+    case CURRENTPAGE:
+      return {
+        ...state,
+        currentPage: action.payload
+      }
 
     default:
       return {
