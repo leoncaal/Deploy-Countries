@@ -15,7 +15,7 @@ import {GETALLCOUNTRIES,
 export const getAllCountries = () => {
     return async function (dispatch) {
         try {
-            const response = await axios('http://localhost:3001/countries/');
+            const response = await axios('/countries/');
             return dispatch({type: GETALLCOUNTRIES , payload: response.data});
         } catch (error) {
             window.alert (error.response.data);
@@ -26,7 +26,7 @@ export const getAllCountries = () => {
 export const getCountryDetail = (id) => {
     return async function (dispatch) {
         try {
-            const response = await axios(`http://localhost:3001/countries/${id}`);
+            const response = await axios(`/countries/${id}`);
             return dispatch({type:GETCOUNTRYDETAIL, payload: response.data});
         } catch (error) {
             window.alert (error.response.data);
@@ -37,7 +37,7 @@ export const getCountryDetail = (id) => {
 export const getCountryByName = (country) => {
     return async function (dispatch) {
         try {
-            const response = await axios(`http://localhost:3001/countries/?name=${country}`);
+            const response = await axios(`/countries/?name=${country}`);
             return dispatch({type:GETCOUNTRYBYNAME, payload: response.data});
         } catch (error) {
             window.alert(error.response.data);
@@ -48,7 +48,7 @@ export const getCountryByName = (country) => {
 export const addActivity = (activity) => {
     return async function (dispatch) {
         try {
-            const response = await axios.post("http://localhost:3001/activities/", activity);
+            const response = await axios.post("/activities/", activity);
             return dispatch({ type: ADDACTIVITY, payload: response.data });
         } catch (error) {
             window.alert(error.response.data)
@@ -59,7 +59,7 @@ export const addActivity = (activity) => {
   export const getActivities = () => {
     return async function (dispatch) {
         try {
-            const response = await axios("http://localhost:3001/activities/");
+            const response = await axios("/activities/");
             return dispatch({type: GETACTIVITIES, payload:response.data})
         } catch (error) {
             //window.alert(error.response.data);
