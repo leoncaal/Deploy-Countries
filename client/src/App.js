@@ -7,7 +7,7 @@ import Form from "./components/Form/Form";
 import NavBar from "./components/NavBar/NavBar";
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://api.render.com/deploy/srv-cjj5dlocfp5c73e4hud0?key=NtxZJIkFVxI'
+axios.defaults.baseURL = 'https://countries-5j56.onrender.com'
 
 function App() {
   const location = useLocation();
