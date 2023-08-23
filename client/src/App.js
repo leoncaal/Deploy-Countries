@@ -7,7 +7,7 @@ import Form from "./components/Form/Form";
 import NavBar from "./components/NavBar/NavBar";
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://deploy-countries-production.up.railway.app'
+axios.defaults.baseURL = 'https://deploy-countries-2f3b-dev.fl0.io'
 
 function App() {
   const location = useLocation();
